@@ -5,10 +5,10 @@ using BookStoreWebApi.DbOperations;
 
 namespace BookStoreWebApi.BookOperations.GetBooks
 {
-    public class GetBooksCommand
+    public class GetBooksQuery
     {
         private readonly BookStoreDbContext _context;
-        public GetBooksCommand(BookStoreDbContext context)
+        public GetBooksQuery(BookStoreDbContext context)
         {
             _context = context;
         }

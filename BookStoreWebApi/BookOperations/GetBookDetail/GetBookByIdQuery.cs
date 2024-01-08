@@ -6,12 +6,12 @@ using BookStoreWebApi.Common;
 using BookStoreWebApi.DbOperations;
 using BookStoreWebApi.Entities;
 
-namespace BookStoreWebApi.BookOperations.GetBookById
+namespace BookStoreWebApi.BookOperations.GetBookDetail
 {
-    public class GetBookByIdCommand
+    public class GetBookByIdQuery
     {
         private readonly BookStoreDbContext _context;
-        public GetBookByIdCommand(BookStoreDbContext context)
+        public GetBookByIdQuery(BookStoreDbContext context)
         {
             _context = context;
         }
@@ -25,7 +25,6 @@ namespace BookStoreWebApi.BookOperations.GetBookById
 
             var bookVm = new BookViewModel()
             {
-                Id = book.Id,
                 Title = book.Title,
                 Genre = ( (GenreEnum)book.GenreId ).ToString(),
                 PageCount = book.PageCount,
@@ -38,7 +37,6 @@ namespace BookStoreWebApi.BookOperations.GetBookById
 
     public class BookViewModel
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
         public int PageCount { get; set; }

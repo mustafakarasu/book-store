@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using BookStoreWebApi.BookOperations.CreateBook;
 using BookStoreWebApi.BookOperations.DeleteBook;
-using BookStoreWebApi.BookOperations.GetBookById;
+using BookStoreWebApi.BookOperations.GetBookDetail;
 using BookStoreWebApi.BookOperations.GetBooks;
 using BookStoreWebApi.BookOperations.UpdateBook;
 using BookStoreWebApi.DbOperations;
@@ -28,7 +28,7 @@ namespace BookStoreWebApi.Controllers
         [HttpGet]
         public IActionResult GetBooks()
         {
-            GetBooksCommand command = new GetBooksCommand(_context);
+            GetBooksQuery command = new GetBooksQuery(_context);
             var obj = command.Handle();
             return Ok(obj);
         }
@@ -44,7 +44,7 @@ namespace BookStoreWebApi.Controllers
             BookViewModel result;
             try
             {
-                var command = new GetBookByIdCommand(_context);
+                var command = new GetBookByIdQuery(_context);
                 result = command.Handle(id);
             }
             catch ( Exception ex )
