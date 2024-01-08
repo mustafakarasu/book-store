@@ -20,7 +20,7 @@ namespace BookStoreWebApi.BookOperations.UpdateBook
         {
             var book = _context.Books.AsNoTracking().SingleOrDefault(x => x.Id == id);
 
-            if ( book is not null )
+            if ( book is null )
                 throw new InvalidOperationException($"{id} değerine sahip bir kitap yok.");
 
             var updatedBook = new Book();

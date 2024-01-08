@@ -22,6 +22,7 @@ namespace BookStoreWebApi.BookOperations.GetBooks
             {
                 vm.Add(new BooksViewModel()
                 {
+                    Id = item.Id,
                     Title = item.Title,
                     Genre = ((GenreEnum)item.GenreId).ToString(),
                     PageCount = item.PageCount,
@@ -35,6 +36,7 @@ namespace BookStoreWebApi.BookOperations.GetBooks
 
     public class BooksViewModel
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
         public int PageCount { get; set; }

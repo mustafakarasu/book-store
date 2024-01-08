@@ -20,11 +20,12 @@ namespace BookStoreWebApi.BookOperations.GetBookById
         {
             var book = _context.Books.SingleOrDefault(x => x.Id == id);
 
-            if ( book is not null )
+            if ( book is null )
                 throw new InvalidOperationException($"{id} değerine sahip bir kitap yok.");
 
             var bookVm = new BookViewModel()
             {
+                Id = book.Id,
                 Title = book.Title,
                 Genre = ( (GenreEnum)book.GenreId ).ToString(),
                 PageCount = book.PageCount,
@@ -37,6 +38,7 @@ namespace BookStoreWebApi.BookOperations.GetBookById
 
     public class BookViewModel
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
         public int PageCount { get; set; }
